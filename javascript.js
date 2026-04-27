@@ -32,6 +32,12 @@ function getColor(property) {
   switch (property) {
     case 1:
       return '#ff0000'
+    case 2:
+      return 'ffcc00'
+    case 4:
+      return '#6699ff'
+    case 9:
+      return '#ffcc00'
     case 13:
       return '#009933'
     case 6:
