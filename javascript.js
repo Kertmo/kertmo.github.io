@@ -8,6 +8,10 @@ const osm = L.tileLayer(
   }
 );
 
+function popUPinfo(feature, layer) {
+  layer.bindPopup(feature.properties.NIMI)
+}
+
 // add geoJSON polygons layer
 async function addDistrictsGeoJson(url) {
   const response = await fetch(url)
@@ -16,7 +20,3 @@ async function addDistrictsGeoJson(url) {
     onEachFeature: popUPinfo,
   })
   polygons.addTo(map)
-
-function popUPinfo(feature, layer) {
-  layer.bindPopup(feature.properties.NIMI)
-}
