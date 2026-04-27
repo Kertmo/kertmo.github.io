@@ -1,4 +1,4 @@
-﻿let map = L.map("map").setView([58.373523, 26.716045], 12);
+let map = L.map("map").setView([58.373523, 26.716045], 12);
 
 const osm = L.tileLayer(
   "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -8,6 +8,9 @@ const osm = L.tileLayer(
   }
 );
 
+osm.addTo(map)
+
+// add popup to each feature
 function popUPinfo(feature, layer) {
   layer.bindPopup(feature.properties.NIMI)
 }
@@ -20,3 +23,6 @@ async function addDistrictsGeoJson(url) {
     onEachFeature: popUPinfo,
   })
   polygons.addTo(map)
+}
+
+addDistrictsGeoJson('geojson/tartu_city_districts_edu.geojson')
