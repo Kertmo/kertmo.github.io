@@ -26,7 +26,6 @@ async function addDistrictsGeoJson(url) {
   polygons.addTo(map)
 }
 
-
 // get color from feature property
 function getColor(property) {
   switch (property) {
@@ -85,3 +84,9 @@ function createCircle(feature, latlng) {
 }
 
 addCelltowersGeoJson('geojson/tartu_city_celltowers_edu.geojson')
+
+// default map settings
+function defaultMapSettings() {
+  map.setView([58.373523, 26.716045], 12)
+}
+
