@@ -1,8 +1,5 @@
-
-// basic map setup
 let map = L.map("map").setView([58.373523, 26.716045], 12)
 
-// raster tile layer
 const osm = L.tileLayer(
   "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
   {
@@ -13,7 +10,6 @@ const osm = L.tileLayer(
 
 osm.addTo(map)
 
-// vector layer: Tartu city cell towers
 async function addCelltowersGeoJson(url) {
   const response = await fetch(url)
   const data = await response.json()
@@ -23,16 +19,6 @@ async function addCelltowersGeoJson(url) {
 
 addCelltowersGeoJson('geojson/tartu_city_celltowers_edu.geojson')
 
-// default map settings
 function defaultMapSettings() {
   map.setView([58.373523, 26.716045], 12)
-}
-
-addGeoJson('geojson/tartu_city_celltowers_edu.geojson')
-
-// add geoJSON layer
-async function addGeoJson(url) {
-  const response = await fetch(url)
-  const data = await response.json()
-  console.log(data.features[0])
 }
