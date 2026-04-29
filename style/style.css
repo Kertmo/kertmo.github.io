@@ -6,13 +6,13 @@ body {
 /* Banner */
 .banner img {
   width: 100%;
-  height: auto;
+  height: 100px;
   display: block;
 }
 
 /* Navbar */
 nav {
-  background-color: #333;
+  background-color: #4d4d4d;
   padding: 10px 20px;
 }
 
