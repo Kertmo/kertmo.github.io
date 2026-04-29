@@ -1,18 +1,16 @@
 /* General*/
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Banner */
 .banner img {
   width: 100%;
-  height: 300px,
-  display: block,
-  overflow: hidden;
+  height: auto;
+  display: block;
 }
 
-/* Nav */
+/* Navbar */
 nav {
   background-color: #333;
   padding: 10px 20px;
@@ -21,14 +19,9 @@ nav {
 nav a {
   color: #ffffff;
   text-decoration: none;
-  margin-right: 20px;
+  margin-right: 15px;
 }
 
-nav a:hover {
-  text-decoration: underline;
-}
-
-/* Active nav*/
 nav a.active {
   color: #ffcc00;
   text-decoration: underline;
@@ -51,7 +44,6 @@ nav a.active {
 /* Map */
 #map {
   height: 700px;
-  margin-bottom: 20px;
 }
 
 /* Footer */
