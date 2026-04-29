@@ -23,14 +23,14 @@ nav a {
 }
 
 nav a.active {
-  color: #ffcc00;
+  color: #ff0000;
   text-decoration: underline;
 }
 
 /* Title */
 .title {
   text-align: center;
-  color: #333;
+  color: #333333;
   margin-top: 20px;
   margin-bottom: 20px;
 }
