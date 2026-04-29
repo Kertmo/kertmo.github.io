@@ -1,17 +1,18 @@
-/ General
+/* General*/
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/ Banner
+/* Banner */
 .banner img {
   width: 100%;
-  height: auto;
-  display: block;
+  height: 300px,
+  display: block,
+  overflow: hidden;
 }
 
-/ Navbar
+/* Nav */
 nav {
   background-color: #333;
   padding: 10px 20px;
@@ -27,13 +28,13 @@ nav a:hover {
   text-decoration: underline;
 }
 
-/* active navigation link */
+/* Active nav*/
 nav a.active {
   color: #ffcc00;
   text-decoration: underline;
 }
 
-/ Title
+/* Title */
 .title {
   text-align: center;
   color: #333;
@@ -41,19 +42,19 @@ nav a.active {
   margin-bottom: 20px;
 }
 
-/ Container
+/* Container */
 .container {
   padding-left: 5%;
   padding-right: 5%;
 }
 
-/ Map
+/* Map */
 #map {
   height: 700px;
   margin-bottom: 20px;
 }
 
-/ Footer
+/* Footer */
 footer {
   margin-top: 40px;
   padding: 15px;
