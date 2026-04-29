@@ -7,7 +7,7 @@ const osm = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 
 osm.addTo(map)
 
-addGeoJson('geojson/tartu_city_celltowers_edu.geojson')
+addGeoJson('../geojson/tartu_city_celltowers_edu.geojson')
 // add geoJSON layer
 async function addGeoJson(url) {
   const response = await fetch(url)
