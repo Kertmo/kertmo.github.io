@@ -30,16 +30,30 @@ function getColor(property) {
       return '#ff0000'
     case 2:
       return 'ffcc00'
+    case 3:
+      return '#99ccff'
     case 4:
       return '#6699ff'
+    case 5:
+      return '#ff80d5'
+    case 6:
+      return '#ffcc99'
+    case 7:
+      return '#66ff99'
+    case 8:
+      return '#d279a6'
     case 9:
       return '#ffcc00'
+    case 10:
+      return '#4dffdb'
+    case 11:
+      return '#8080ff'
+    case 12:
+      return '#b3b300'
     case 13:
       return '#009933'
-    case 6:
-      return '#0000ff'
-    case 7:
-      return '#ff0066'
+    case 14:
+      return '#d9d9d9'
     default:
       return '#ffffff'
   }
