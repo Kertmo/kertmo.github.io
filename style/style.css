@@ -1,1 +1,63 @@
+/ General
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
+/ Banner
+.banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/ Navbar
+nav {
+  background-color: #333;
+  padding: 10px 20px;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* active navigation link */
+nav a.active {
+  color: #ffcc00;
+  text-decoration: underline;
+}
+
+/ Title
+.title {
+  text-align: center;
+  color: #333;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/ Container
+.container {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+/ Map
+#map {
+  height: 700px;
+  margin-bottom: 20px;
+}
+
+/ Footer
+footer {
+  margin-top: 40px;
+  padding: 15px;
+  background-color: #333;
+  color: #ffffff;
+  text-align: center;
+}
