@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Heatmap</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+  </head>
+  <body>
+    <div class="banner">
+      <img src="../style/banner.jpg" alt="Tartu city banner">
+    </div>
+    <nav>
+      <a href="../index.html">Basic Map</a>
+      <a href="heatmap.html" class="active">Heatmap</a>
+      <a href="../choroplethmap/choroplethmap.html">Choroplethmap</a>
+    </nav>
+    <div class="title">
+      <h1>Heatmap</h1>
+    </div>
+    <div class="container">
+      <p>This map displays the heatmap of cell tower locations in Tartu city</p>
+      <p>Data by the Department of Geography</p>
+      <button onclick="defaultMapSettings()">Default view</button>
+      <div id="map"></div>
+    </div>
+    <footer>
+      © Kert Moist 2026, University of Tartu - Spatial Data on the Web (LTOM.02.071)
+    </footer>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.heat@0.2.0/dist/leaflet-heat.min.js"></script>
+    <script src="heatmap.js"></script>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+/* General*/
+body {
+  margin: 0;
+}
+
+/* Banner */
+.banner {
+  height: 200px;
+  overflow: hidden;
+}
+
+.banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Navbar */
+nav {
+  background-color: #4d4d4d;
+  padding: 10px 20px;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  margin-right: 15px;
+}
+
+nav a.active {
+  color: #4d88ff;
+  text-decoration: underline;
+}
+
+/* Title */
+.title {
+  text-align: center;
+  color: #333333;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Container */
+.container {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+/* Map */
+#map {
+  height: 700px;
+}
+
+/* Footer */
+footer {
+  margin-top: 40px;
+  padding: 15px;
+  background-color: #333333;
+  color: #ffffff;
+  text-align: center;
+}

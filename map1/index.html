@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Basic map</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
+  </head>
+  <body>
+    <div class="banner">
+      <img src="style/banner.jpg" alt="Tartu city banner">
+    </div>
+    <nav>
+      <a href="index.html" class="active">Basic Map</a>
+      <a href="heatmap/heatmap.html">Heatmap</a>
+      <a href="choroplethmap/choroplethmap.html">Choroplethmap</a>
+    </nav>
+    <div class="title">
+      <h1>Basic Map</h1>
+    </div>
+    <div class="container">
+      <p>This map displays the districts of Tartu together with cell tower hotspots</p>
+      <p>Data by the Department of Geography</p>
+      <button onclick="defaultMapSettings()">Default view</button>
+      <div id="map"></div>
+    </div>
+    <footer>
+      © Kert Moist 2026, University of Tartu - Spatial Data on the Web (LTOM.02.071)
+    </footer>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+    <script src="javascript.js"></script>
+  </body>
+</html>

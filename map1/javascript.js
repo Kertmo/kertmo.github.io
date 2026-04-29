@@ -1,0 +1,103 @@
+let map = L.map("map").setView([58.373523, 26.716045], 12)
+
+const osm = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    attribution: "OpenStreetMap contributors",
+  })
+
+osm.addTo(map)
+
+// add popup to each feature
+function popUPinfo(feature, layer) {
+  layer.bindPopup(feature.properties.NIMI)
+}
+
+// add geoJSON polygons layer
+async function addDistrictsGeoJson(url) {
+  const response = await fetch(url)
+  const data = await response.json()
+  const polygons = L.geoJson(data, {
+    onEachFeature: popUPinfo,
+    style: polygonStyle,
+  })
+  polygons.addTo(map)
+}
+
+// get color from feature property
+function getColor(property) {
+  switch (property) {
+    case 1:
+      return '#ff0000'
+    case 2:
+      return 'ffcc00'
+    case 3:
+      return '#99ccff'
+    case 4:
+      return '#6699ff'
+    case 5:
+      return '#ff80d5'
+    case 6:
+      return '#ffcc99'
+    case 7:
+      return '#66ff99'
+    case 8:
+      return '#d279a6'
+    case 9:
+      return '#ffcc00'
+    case 10:
+      return '#4dffdb'
+    case 11:
+      return '#8080ff'
+    case 12:
+      return '#b3b300'
+    case 13:
+      return '#009933'
+    case 14:
+      return '#d9d9d9'
+    default:
+      return '#ffffff'
+  }
+}
+
+// polygon style
+function polygonStyle(feature) {
+  return {
+    fillColor: getColor(feature.properties.OBJECTID),
+    fillOpacity: 0.5,
+    weight: 1,
+    opacity: 1,
+    color: 'grey',
+  }
+}
+
+addDistrictsGeoJson("geojson/tartu_city_districts_edu.geojson")
+
+// add geoJSON points layer*
+async function addCelltowersGeoJson(url) {
+  const response = await fetch(url)
+  const data = await response.json()
+  const markers = L.geoJson(data)
+  const clusters = L.markerClusterGroup()
+  clusters.addLayer(markers)
+  clusters.addTo(map)
+}
+
+function createCircle(feature, latlng) {
+  let options = {
+    radius: 5,
+    fillColor: 'red',
+    fillOpacity: 0.5,
+    color: 'red',
+    weight: 1,
+    opacity: 1,
+  }
+  return L.circleMarker(latlng, options)
+}
+
+addCelltowersGeoJson('geojson/tartu_city_celltowers_edu.geojson')
+
+// default map settings
+function defaultMapSettings() {
+  map.setView([58.373523, 26.716045], 12)
+}
+
