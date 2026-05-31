@@ -183,5 +183,8 @@ async function initializeLayers() {
   osmLayer.addTo(map);
 
   districtsLayer.addTo(map);
+  heatMapLayer.addTo(map);
+  
+  console.log(map)
 }
 initializeLayers();
