@@ -32,8 +32,6 @@ const baseLayers = {
   "Topographic": topoLayer
 };
 
-const overlayLayers = { };
-
 const layerControlOptions = {
   collapsed: false,
   position: 'topleft'
@@ -45,3 +43,73 @@ layerControl.addTo(map);
 
 // lisa ka vaikimisi layer kaardile
 osmLayer.addTo(map);
+
+
+let districtsLayer;
+let choroplethLayer;
+let heatMapLayer;
+let markersLayer;
+
+
+// Districts GeoJSON
+async function loadDistrictsLayer() {
+  try {
+    const response = await fetch('geojson/tartu_city_districts_edu.geojson');
+    const data = await response.json();
+    
+    districtsLayer = L.geoJson(data, {
+      style: function(feature) {
+        return {
+          fillColor: getDistrictColor(feature.properties.OBJECTID),
+          fillOpacity: 0.5,
+          weight: 1,
+          opacity: 1,
+          color: 'grey'
+        };
+      },
+      onEachFeature: function(feature, layer) {
+        layer.bindPopup(feature.properties.NIMI || 'District ' + feature.properties.OBJECTID);
+      }
+    });
+  } catch (error) {
+    console.error("Error loading districts data:", error);
+  }
+}
+
+
+// color function
+function getDistrictColor(id) {
+  switch (id) {
+    case 1: return '#ff0000';
+    case 13: return '#009933';
+    case 6: return '#0000ff';
+    case 7: return '#ff0066';
+    default: return '#ffffff';
+  }
+}
+
+
+// Choropleth layer
+async function loadChoroplethLayer() {
+  try {
+    const response = await fetch('geojson/tartu_city_districts_edu.geojson');
+    const data = await response.json();
+    
+    choroplethLayer = L.choropleth(data, {
+      valueProperty: 'OBJECTID',
+      scale: ['#e6ffe6', '#004d00'],
+      steps: 11,
+      mode: 'q',
+      style: {
+        color: '#fff',
+        weight: 2,
+        fillOpacity: 0.8,
+      },
+      onEachFeature: function(feature, layer) {
+        layer.bindPopup('Value: ' + feature.properties.OBJECTID);
+      }
+    });
+  } catch (error) {
+    console.error("Error loading choropleth data:", error);
+  }
+}
