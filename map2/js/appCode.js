@@ -11,4 +11,9 @@ const osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
   attribution: 'OpenStreetMap contributors'
 });
 
+// Default map settings
+function defaultMapSettings() {
+  map.setView([58.373523, 26.716045], 12)
+}
+
 osmLayer.addTo(map);
