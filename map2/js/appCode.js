@@ -184,3 +184,4 @@ async function initializeLayers() {
 
   districtsLayer.addTo(map);
 }
+initializeLayers();
