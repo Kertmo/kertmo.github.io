@@ -27,12 +27,12 @@ body {
   font-weight: bold;
 }
 
-
 .default-button {
   position: absolute;
-  bottom: 10px;
+  top: 185px;
   left: 10px;
   z-index: 1001;
+  width: 170px; /* sama mis layer controlil */
   padding: 8px 20px;
   background-color: white;
   border: 2px solid rgba(0, 0, 0, 0.2);
