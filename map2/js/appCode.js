@@ -32,21 +32,6 @@ const baseLayers = {
   "Topographic": topoLayer
 };
 
-const overlayLayers = { };
-
-const layerControlOptions = {
-  collapsed: false,
-  position: 'topleft'
-};
-
-const layerControl = L.control.layers(baseLayers, overlayLayers, layerControlOptions);
-
-layerControl.addTo(map);
-
-// lisa ka vaikimisi layer kaardile
-osmLayer.addTo(map);
-
-
 let districtsLayer;
 let choroplethLayer;
 let heatMapLayer;
@@ -168,4 +153,34 @@ async function loadMarkersLayer() {
   } catch (error) {
     console.error("Error loading markers data:", error)
   }
+}
+
+async function initializeLayers() {
+
+  await Promise.all([
+    loadDistrictsLayer(),
+    loadChoroplethLayer(),
+    loadHeatMapLayer(),
+    loadMarkersLayer()
+  ]);
+
+  const overlayLayers = {
+    "Tartu districts": districtsLayer,
+    "Choropleth layer": choroplethLayer,
+    "Heatmap": heatMapLayer,
+    "Markers": markersLayer
+  };
+
+  const layerControlOptions = {
+    collapsed: false,
+    position: 'topleft'
+  };
+
+  const layerControl = L.control.layers(baseLayers, overlayLayers, layerControlOptions);
+
+  layerControl.addTo(map);
+
+  osmLayer.addTo(map);
+
+  districtsLayer.addTo(map);
 }
