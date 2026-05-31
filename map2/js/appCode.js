@@ -24,6 +24,24 @@ const topoLayer = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png'
 // Default map settings
 function defaultMapSettings() {
   map.setView([58.373523, 26.716045], 12)
-}
+};
 
+const baseLayers = {
+  "OpenStreetMap": osmLayer,
+  "Satellite": satelliteLayer,
+  "Topographic": topoLayer
+};
+
+const overlayLayers = { };
+
+const layerControlOptions = {
+  collapsed: false,
+  position: 'topleft'
+};
+
+const layerControl = L.control.layers(baseLayers, overlayLayers, layerControlOptions);
+
+layerControl.addTo(map);
+
+// lisa ka vaikimisi layer kaardile
 osmLayer.addTo(map);
