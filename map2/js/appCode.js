@@ -32,6 +32,8 @@ const baseLayers = {
   "Topographic": topoLayer
 };
 
+const overlayLayers = { };
+
 const layerControlOptions = {
   collapsed: false,
   position: 'topleft'
@@ -49,7 +51,6 @@ let districtsLayer;
 let choroplethLayer;
 let heatMapLayer;
 let markersLayer;
-
 
 // Districts GeoJSON
 async function loadDistrictsLayer() {
@@ -87,7 +88,6 @@ function getDistrictColor(id) {
     default: return '#ffffff';
   }
 }
-
 
 // Choropleth layer
 async function loadChoroplethLayer() {
