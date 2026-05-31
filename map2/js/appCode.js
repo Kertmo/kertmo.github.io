@@ -113,3 +113,59 @@ async function loadChoroplethLayer() {
     console.error("Error loading choropleth data:", error);
   }
 }
+
+// Heat Map Layer
+async function loadHeatMapLayer() {
+  try {
+    const response = await fetch('geojson/tartu_city_celltowers_edu.geojson')
+    const data = await response.json()
+    
+    const heatData = data.features.map(function(feature) {
+      return [
+        feature.geometry.coordinates[1],
+        feature.geometry.coordinates[0],
+        feature.properties.area || 1
+      ]
+    })
+    
+    heatMapLayer = L.heatLayer(heatData, {
+      radius: 20,
+      blur: 15,
+      maxZoom: 17,
+    })
+
+  } catch (error) {
+    console.error("Error loading heatmap data:", error)
+  }
+}
+
+// Cell Towers - Markers with Clusters
+async function loadMarkersLayer() {
+  try {
+    const response = await fetch('geojson/tartu_city_celltowers_edu.geojson')
+    const data = await response.json()
+    
+    const geoJsonLayer = L.geoJson(data, {
+      pointToLayer: function(feature, latlng) {
+        return L.circleMarker(latlng, {
+          radius: 5,
+          fillColor: 'red',
+          fillOpacity: 0.5,
+          color: 'red',
+          weight: 1,
+          opacity: 1
+        })
+      },
+      onEachFeature: function(feature, layer) {
+        if (feature.properties) {
+          layer.bindPopup('Cell Tower<br>Area: ' + (feature.properties.area || 'Unknown'))
+        }
+      }
+    })
+    
+    markersLayer = L.markerClusterGroup()
+    markersLayer.addLayer(geoJsonLayer)
+  } catch (error) {
+    console.error("Error loading markers data:", error)
+  }
+}
