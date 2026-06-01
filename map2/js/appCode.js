@@ -214,7 +214,8 @@ function loadWmsLayers(layersList, overlayLayers) {
       format: layer.format,
       transparent: layer.transparent,
       zIndex: layer.zIndex,
-      crs: L.CRS.EPSG3857
+      crs: L.CRS.EPSG3857,
+      srs: "EPSG:3857"
     });
     overlayLayers[layer.title.en] = newLayer;
   });
