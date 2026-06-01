@@ -192,3 +192,4 @@ async function initializeLayers() {
 }
 
 initializeLayers();
+export { turfFunctions }
