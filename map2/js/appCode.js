@@ -29,6 +29,7 @@ const topoLayer = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png'
 function defaultMapSettings() {
   map.setView([58.373523, 26.716045], 12)
 };
+export { defaultMapSettings }
 
 const baseLayers = {
   "OpenStreetMap": osmLayer,
