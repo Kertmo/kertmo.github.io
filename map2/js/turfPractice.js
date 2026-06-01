@@ -78,7 +78,7 @@ function turfFunctions(map) {
   //L.geoJSON(polygonBufferNegative).addTo(map);
 
   const points = turf.points(pointsCollection);
-  L.geoJSON(points).addTo(map);
+  //L.geoJSON(points).addTo(map);
   
   const pointsWithinBorders = turf.pointsWithinPolygon(points, myPolygon);
   console.log(pointsWithinBorders)
