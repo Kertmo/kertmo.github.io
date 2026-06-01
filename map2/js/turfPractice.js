@@ -1,3 +1,4 @@
+import { pointsCollection } from "../js/points.js";
 function turfFunctions(map) {
   console.log('This text is from a module');
   alert('Hello from my module!');
@@ -76,6 +77,12 @@ function turfFunctions(map) {
   const polygonBufferNegative = turf.buffer(myPolygon, -10, { units: 'meters' });
   //L.geoJSON(polygonBufferNegative).addTo(map);
 
+  const points = turf.points(pointsCollection);
+  L.geoJSON(points).addTo(map);
+  
+  const pointsWithinBorders = turf.pointsWithinPolygon(points, myPolygon);
+  console.log(pointsWithinBorders)
+  L.geoJSON(pointsWithinBorders).addTo(map);
 
 }
 export { turfFunctions };
