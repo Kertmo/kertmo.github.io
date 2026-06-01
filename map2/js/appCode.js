@@ -1,3 +1,5 @@
+import * as layers from "./layers.js";
+import * as turfPractice from "./turfPractice.js";
 
 let map = L.map('map', {
   center: [58.373523, 26.716045],
@@ -205,10 +207,6 @@ async function initializeLayers() {
 //});
 
 initializeLayers();
-
-
-import * as layers from "./layers.js";
-import * as turfPractice from "./turfPractice.js";
 
 function loadWmsLayers(layersList, overlayLayers) {
   layersList.forEach(layer => {
