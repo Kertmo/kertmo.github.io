@@ -63,19 +63,18 @@ function turfFunctions(map) {
 
   // point buffer
   const statueBuffer = turf.buffer(myPoint, 20, { units: 'meters' });
-  L.geoJSON(statueBuffer).addTo(map);
+  //L.geoJSON(statueBuffer).addTo(map);
   
   // line buffer
   const lineBuffer = turf.buffer(myLine, 20, { units: 'meters' });
-  L.geoJSON(lineBuffer).addTo(map);
+  //L.geoJSON(lineBuffer).addTo(map);
   
   // polygon buffer
   const polygonBuffer = turf.buffer(myPolygon, 20, { units: 'meters' });
-  L.geoJSON(polygonBuffer).addTo(map);
+  //L.geoJSON(polygonBuffer).addTo(map);
   
-  // negative polygon buffer (katsetus)
   const polygonBufferNegative = turf.buffer(myPolygon, -10, { units: 'meters' });
-  L.geoJSON(polygonBufferNegative).addTo(map);
+  //L.geoJSON(polygonBufferNegative).addTo(map);
 
 
 }
