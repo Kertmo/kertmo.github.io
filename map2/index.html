@@ -3,19 +3,22 @@
   <head>
     <meta charset="utf-8" />
     <title>Tartu map application</title>
+
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
     <link rel="stylesheet" href="css/appStyle.css">
   </head>
+
   <body>
     <div class="map-title">Tartu map application</div>
+
     <div id="map"></div>
-    
+
     <button id="applySettingsButton" class="default-button">
       Default View
     </button>
-    
+
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/leaflet-choropleth@1.1.4/dist/choropleth.js"></script>
@@ -28,38 +31,12 @@
     </style>
 
     <script type="module">
-      import styling from "./js/styles.js";
       import { defaultMapSettings } from "./js/appCode.js";
-  
-      const map = L.map('map').setView([58.373523, 26.716045], 10);
 
-
-      const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors'
-      })
-
-      const Stadia_AlidadeSmooth = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.{ext}', {
-        minZoom: 0,
-        maxZoom: 20,
-        attribution: '© OpenStreetMap contributors',
-        ext: 'png'
-      })
-
-      Stadia_AlidadeSmooth.addTo(map)
-
-      const vectorTileLayerStyle = {
-        style: styling.styles.vectorTileStyle,
-      }
-      
-      // Hytruck suitability layer
-      const vectorTileUrl = 'https://hytruck.landscape-geoinformatics.eu/tiles-api/v1/00000000-0000-0000-0000-000000000000@AHP%20Default%20Settings@-1/{z}/{x}/{y}'
-      const vectorLayer = VectorTileLayer(vectorTileUrl, vectorTileLayerStyle)
-    
-      // Joonatan's forest layer
-      const foresturl = "https://data-apps.landscape-geoinformatics.org/e_305_puittaimestik_a/{z}/{x}/{y}"
-      const forestLayer = VectorTileLayer(foresturl, vectorTileLayerStyle)
-      forestLayer.addTo(map)
-      document.getElementById("applySettingsButton").addEventListener("click", defaultMapSettings)
+      document
+        .getElementById("applySettingsButton")
+        .addEventListener("click", defaultMapSettings);
     </script>
+
   </body>
 </html>
