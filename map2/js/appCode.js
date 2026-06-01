@@ -192,14 +192,14 @@ async function initializeLayers() {
   // districtsLayer.addTo(map);
 }
 
-map.on('click', function(event) {
-  console.log(`[${event.latlng.lng}, ${event.latlng.lat}]`);
+//map.on('click', function(event) {
+//  console.log(`[${event.latlng.lng}, ${event.latlng.lat}]`);
 
-  let pointCoords = [event.latlng.lng, event.latlng.lat];
-  let turfPoint = turf.point(pointCoords);
+//  let pointCoords = [event.latlng.lng, event.latlng.lat];
+//  let turfPoint = turf.point(pointCoords);
 
-  L.geoJSON(turfPoint).addTo(map);
-});
+//  L.geoJSON(turfPoint).addTo(map);
+//});
 
 initializeLayers();
 
