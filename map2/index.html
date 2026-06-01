@@ -25,11 +25,12 @@
       #map { width: 100%; height: 100vh; }
     </style>
 
-    <script type="module" src="js/appCode.js"></script>
-    
     <script type="module">
-      import styling from "js/styles.js"
-      const map = L.map('map').setView([58.373523, 26.716045], 10)
+      import styling from "./js/styles.js";
+      import { defaultMapSettings } from "./js/appCode.js";
+  
+      const map = L.map('map').setView([58.373523, 26.716045], 10);
+
 
       const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
@@ -56,6 +57,7 @@
       const foresturl = "https://data-apps.landscape-geoinformatics.org/e_305_puittaimestik_a/{z}/{x}/{y}"
       const forestLayer = VectorTileLayer(foresturl, vectorTileLayerStyle)
       forestLayer.addTo(map)
+      document.getElementById("applySettingsButton").addEventListener("click", defaultMapSettings)
     </script>
   </body>
 </html>
