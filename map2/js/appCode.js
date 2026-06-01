@@ -192,4 +192,7 @@ async function initializeLayers() {
 }
 
 initializeLayers();
-export { turfFunctions }
+
+// import all functsions from turfPractice javascript
+import * as turfPractice from "./turfPractice.js"
+turfPractice.turfFunctions() // to use the function
