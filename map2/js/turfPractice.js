@@ -60,8 +60,8 @@ function turfFunctions(map) {
 
   const areaMeasurement = turf.area(myPolygon)
   const areaRounded = Math.round(areaMeasurement)
-  console.log(`Area without rounding: ${areaMeasurement}`)
-  console.log(`Rounded area is ${areaRounded} square meters`)
+  //console.log(`Area without rounding: ${areaMeasurement}`)
+  //console.log(`Rounded area is ${areaRounded} square meters`)
 
 
 }
