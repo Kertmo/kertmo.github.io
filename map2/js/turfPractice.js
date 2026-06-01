@@ -54,9 +54,9 @@ const distanceRounded = Math.round(distance);
 const roundedToTwoDecimals = Math.round(distance * 100) / 100;
 
 // kuvamine
-console.log(`distance is ${distance} meters`);
-console.log(`rounded to nearest integer: ${distanceRounded}`);
-console.log(`rounded to two decimal points: ${roundedToTwoDecimals}`);
+//console.log(`distance is ${distance} meters`);
+//console.log(`rounded to nearest integer: ${distanceRounded}`);
+//console.log(`rounded to two decimal points: ${roundedToTwoDecimals}`);
 
 }
 export { turfFunctions };
