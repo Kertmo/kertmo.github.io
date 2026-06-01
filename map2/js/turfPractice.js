@@ -19,6 +19,9 @@ function turfFunctions(map) {
   const geoJSON_line = L.geoJSON(myLine);
   geoJSON_line.addTo(map);
 
+  const alongPoint = turf.along(myLine, 0.05, { units: 'kilometers' });
+  L.geoJSON(alongPoint).addTo(map);
+  
   const polygonCoords = [[
     [26.71355, 58.37468],
     [26.71404, 58.37430],
