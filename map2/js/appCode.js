@@ -188,7 +188,7 @@ async function initializeLayers() {
 
   osmLayer.addTo(map);
 
-  districtsLayer.addTo(map);
+  // districtsLayer.addTo(map);
 }
 
 initializeLayers();
