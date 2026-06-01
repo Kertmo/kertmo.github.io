@@ -14,7 +14,9 @@ function turfFunctions(map) {
     [26.71473, 58.37407]
   ]
   // define the line object
-  const myLine = turf.lineString(lineCoords);
+  const myLine = turf.lineString(lineCoords);  
+  const geoJSON_line = L.geoJSON(myLine);
+  geoJSON_line.addTo(map);
 
   const polygonCoords = [[
     [26.71355, 58.37468],
@@ -32,6 +34,8 @@ function turfFunctions(map) {
   ]]
   // define polygon object
   const myPolygon = turf.polygon(polygonCoords);
+  const geoJSON_polygon = L.geoJSON(myPolygon);
+  geoJSON_polygon.addTo(map);
 }
 
 export { turfFunctions };
