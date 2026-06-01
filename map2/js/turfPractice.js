@@ -1,4 +1,4 @@
-function turfFunctions() {
+function turfFunctions(map) {
   console.log('This text is from a module');
   alert('Hello from my module!');
 
