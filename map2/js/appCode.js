@@ -1,7 +1,7 @@
 
 let map = L.map('map', {
   center: [58.373523, 26.716045],
-  zoom: 18,
+  zoom: 13,
   zoomControl: true // Enable default zoom control
 });
 
