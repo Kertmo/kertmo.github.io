@@ -207,4 +207,17 @@ initializeLayers();
 import * as layers from "./layers.js";
 import * as turfPractice from "./turfPractice.js";
 
+function loadWmsLayers(layersList, overlayLayers) {
+  layersList.forEach(layer => {
+    let newLayer = L.tileLayer.wms(layer.url, {
+      version: layer.version,
+      layers: layer.layers,
+      format: layer.format,
+      transparent: layer.transparent,
+      zIndex: layer.zIndex,
+    })
+    // add each layer to overlayLayers object to display them in layers list menu
+    overlayLayers[layer.title.en] = newLayer
+  })
+}
 // turfPractice.turfFunctions(map);
