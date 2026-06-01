@@ -4,7 +4,7 @@ let map = L.map('map', {
   zoom: 18,
   zoomControl: true // Enable default zoom control
 });
-
+window.map = map;
 map.createPane('customDistrictsPane');
 map.getPane('customDistrictsPane').style.zIndex = 390;
 
