@@ -165,23 +165,22 @@ async function loadMarkersLayer() {
 }
 
 async function initializeLayers() {
-
   await Promise.all([
     loadDistrictsLayer(),
     loadChoroplethLayer(),
     loadHeatMapLayer(),
     loadMarkersLayer()
-  ]);
+  ])
 
   const overlayLayers = {
-    "Tartu districts": districtsLayer,
-    "Choropleth layer": choroplethLayer,
+    "Markers": markersLayer,
     "Heatmap": heatMapLayer,
-    "Markers": markersLayer
-  };
-  
+    "Choropleth layer": choroplethLayer,
+    "Tartu districts": districtsLayer,
+  }
 
- loadWmsLayers(layers.wmsLayers, overlayLayers);
+// insert function call here
+loadWmsLayers(layers.wmsLayers, overlayLayers)
 
   const layerControlOptions = {
     collapsed: false,
