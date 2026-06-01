@@ -49,11 +49,9 @@ function turfFunctions(map) {
   // kauguse arvutamine turf points
   const distance = turf.distance(myPoint, myPoint2, options);
   
-  // ümardamine
   const distanceRounded = Math.round(distance);
   const roundedToTwoDecimals = Math.round(distance * 100) / 100;
   
-  // kuvamine
   //console.log(`distance is ${distance} meters`);
   //console.log(`rounded to nearest integer: ${distanceRounded}`);
   //console.log(`rounded to two decimal points: ${roundedToTwoDecimals}`);
@@ -62,6 +60,22 @@ function turfFunctions(map) {
   const areaRounded = Math.round(areaMeasurement)
   //console.log(`Area without rounding: ${areaMeasurement}`)
   //console.log(`Rounded area is ${areaRounded} square meters`)
+
+  // point buffer
+  const statueBuffer = turf.buffer(myPoint, 20, { units: 'meters' });
+  L.geoJSON(statueBuffer).addTo(map);
+  
+  // line buffer
+  const lineBuffer = turf.buffer(myLine, 20, { units: 'meters' });
+  L.geoJSON(lineBuffer).addTo(map);
+  
+  // polygon buffer
+  const polygonBuffer = turf.buffer(myPolygon, 20, { units: 'meters' });
+  L.geoJSON(polygonBuffer).addTo(map);
+  
+  // negative polygon buffer (katsetus)
+  const polygonBufferNegative = turf.buffer(myPolygon, -10, { units: 'meters' });
+  L.geoJSON(polygonBufferNegative).addTo(map);
 
 
 }
