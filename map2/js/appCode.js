@@ -205,4 +205,4 @@ initializeLayers();
 
 // import all functsions from turfPractice javascript
 import * as turfPractice from "./turfPractice.js"
-turfPractice.turfFunctions(map);
+//turfPractice.turfFunctions(map);
