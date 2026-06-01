@@ -203,6 +203,8 @@ async function initializeLayers() {
 
 initializeLayers();
 
-// import all functsions from turfPractice javascript
-import * as turfPractice from "./turfPractice.js"
-//turfPractice.turfFunctions(map);
+
+import * as layers from "./layers.js";
+import * as turfPractice from "./turfPractice.js";
+
+// turfPractice.turfFunctions(map);
