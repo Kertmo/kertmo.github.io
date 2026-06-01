@@ -36,6 +36,27 @@ function turfFunctions(map) {
   const myPolygon = turf.polygon(polygonCoords);
   const geoJSON_polygon = L.geoJSON(myPolygon);
   geoJSON_polygon.addTo(map);
-}
 
+  
+const pointCoords2 = [26.71489, 58.37439];
+const myPoint2 = turf.point(pointCoords2);
+const geoJSON_point2 = L.geoJSON(myPoint2);
+geoJSON_point2.addTo(map);
+
+// distane seaded
+const options = { units: 'meters' };
+
+// kauguse arvutamine turf points
+const distance = turf.distance(myPoint, myPoint2, options);
+
+// ümardamine
+const distanceRounded = Math.round(distance);
+const roundedToTwoDecimals = Math.round(distance * 100) / 100;
+
+// kuvamine
+console.log(`distance is ${distance} meters`);
+console.log(`rounded to nearest integer: ${distanceRounded}`);
+console.log(`rounded to two decimal points: ${roundedToTwoDecimals}`);
+
+}
 export { turfFunctions };
