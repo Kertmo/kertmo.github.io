@@ -208,19 +208,20 @@ async function initializeLayers() {
 
 initializeLayers();
 
-function loadWmsLayers(layersList, overlayLayers) {
-  layersList.forEach(layer => {
-    let newLayer = L.tileLayer.wms(layer.url, {
-      version: layer.version,
-      layers: layer.layers,
-      format: layer.format,
-      transparent: layer.transparent,
-      zIndex: layer.zIndex,
-      crs: L.CRS.EPSG3857
-    })
+  function loadWmsLayers(layersList, overlayLayers) {
+    layersList.forEach(layer => {
+      let newLayer = L.tileLayer.wms(layer.url, {
+        version: layer.version,
+        layers: layer.layers,
+        format: layer.format,
+        transparent: layer.transparent,
+        zIndex: layer.zIndex,
+        crs: L.CRS.EPSG3857
+      })
 
     // add each layer to overlayLayers object to display them in layers list menu
     overlayLayers[layer.title.en] = newLayer
   })
 }
 // turfPractice.turfFunctions(map);
+initializeLayers();
