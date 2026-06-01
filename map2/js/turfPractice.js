@@ -20,7 +20,17 @@ function turfFunctions(map) {
   geoJSON_line.addTo(map);
 
   const alongPoint = turf.along(myLine, 0.05, { units: 'kilometers' });
-  L.geoJSON(alongPoint).addTo(map);
+  L.geoJSON(alongPoint, {
+    pointToLayer: function(feature, latlng) {
+      return L.circleMarker(latlng, {
+        radius: 10,
+        color: 'red',
+        fillColor: 'yellow',
+        fillOpacity: 1
+      });
+    }
+  }).addTo(map);
+
   
   const polygonCoords = [[
     [26.71355, 58.37468],
