@@ -22,4 +22,40 @@
       #map { width: 100%; height: 100vh; }
     </style>
     <script src="js/appCode.js"></script>
+      <script type="module">
+    import styling from "/styles.js"
+    const map = L.map('map').setView([58.373523, 26.716045], 10)
+
+    const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    })
+
+    // gray basemap
+    const Stadia_AlidadeSmooth = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.{ext}', {
+      minZoom: 0,
+      maxZoom: 20,
+      attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      ext: 'png'
+    })
+
+    Stadia_AlidadeSmooth.addTo(map)
+
+    // style the vector layer
+    // actual styling happens in styles.js
+    const vectorTileLayerStyle = {
+      style: styling.styles.vectorTileStyle,
+    }
+    
+    // Hytruck suitability layer
+    const vectorTileUrl = 'https://hytruck.landscape-geoinformatics.eu/tiles-api/v1/00000000-0000-0000-0000-000000000000@AHP%20Default%20Settings@-1/{z}/{x}/{y}'
+    const vectorLayer = VectorTileLayer(vectorTileUrl, vectorTileLayerStyle)
+    // vectorLayer.addTo(map)
+
+    // Joonatan's forest layer
+    // could have students experiment with different layers from geodb
+    const foresturl = "https://data-apps.landscape-geoinformatics.org/e_305_puittaimestik_a/{z}/{x}/{y}"
+    const forestLayer = VectorTileLayer(foresturl, vectorTileLayerStyle)
+    forestLayer.addTo(map)
+
+  </script>
   </body>
