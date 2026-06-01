@@ -177,6 +177,9 @@ async function initializeLayers() {
     "Heatmap": heatMapLayer,
     "Markers": markersLayer
   };
+  
+
+ loadWmsLayers(layers.wmsLayers, overlayLayers);
 
   const layerControlOptions = {
     collapsed: false,
