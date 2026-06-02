@@ -29,7 +29,7 @@ body {
 
 .default-button {
   position: absolute;
-  top: 320px;
+  top: 200px;
   left: 10px;
   z-index: 1000;
   width: 131px;
