@@ -251,13 +251,20 @@ map.on('overlayremove', (event) => {
 
 
 map.on('click', function(event) {
+  const infoWindowContent = document.getElementById('info-content')
+  infoWindowContent.innerHTML = ""
+  
+  Object.entries(activeWmsLayers).forEach(([key, value]) => {
+    if (value == true) {
+      document.getElementById('info-box').style.display = 'block';
+      console.log(`We should now build a query for ${key}`)
+    }
+  })
+})
 
-  const infoWindowContent = document.getElementById('info-content');
-  infoWindowContent.innerHTML = "";
-
+map.on('click', function(event) {
   Object.entries(activeWmsLayers).forEach(([key, value]) => {
     if (value === true) {
-      document.getElementById('info-box').style.display = 'block';
 
       console.log(`Querying ${key}...`);
 
@@ -266,6 +273,7 @@ map.on('click', function(event) {
         'https://landscape-geoinformatics.ut.ee/geoserver/pa2023/wms?',
         key
       );
+
       fetchWmsData(url, key);
     }
   });
