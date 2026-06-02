@@ -3,7 +3,7 @@ import * as turfPractice from "./turfPractice.js";
 
 let map = L.map('map', {
   center: [58.373523, 26.716045],
-  zoom: 10,
+  zoom: 12,
   zoomControl: true // Enable default zoom control
 });
 
