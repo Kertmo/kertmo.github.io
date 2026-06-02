@@ -239,6 +239,12 @@ function loadWmsLayers(layersList, overlayLayers, activeWmsLayers) {
 
 // turfPractice.turfFunctions(map);
 
+function toggleActiveState(layerId, boolean) {
+  if (typeof(activeWmsLayers[layerId]) == "boolean") {
+    activeWmsLayers[layerId] = boolean;
+  }
+}
+
 map.on('overlayadd', (event) => {
   let layerId = event.layer.options.layers;
   toggleActiveState(layerId, true);
