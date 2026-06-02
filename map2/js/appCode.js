@@ -303,6 +303,11 @@ function buildRequestUrl(e, baseUrl, layerName) {
   return wmsUrl + params;
 }
 
+function getLayerName(layersData, layerName) {
+  const layer = layersData.filter(entry => entry.layers == layerName)
+  return layer[0].title.en
+}
+
 function fetchWmsData(fullUrl, layerName) {
   fetch(fullUrl)
     .then(response => response.json())
@@ -313,7 +318,7 @@ function fetchWmsData(fullUrl, layerName) {
       const feature = data.features[0]
       const props = feature.properties
       // show the title of the layer
-      let html = `<h4>${layerName}</h4><ul>`
+      let html = `<h4>${getLayerName(layers.wmsLayers, layerName)}</h4><ul>`      
       // show each entry in properties by looping through them
       for (const key in props) {
         // display properties as a list
@@ -325,7 +330,7 @@ function fetchWmsData(fullUrl, layerName) {
       content.innerHTML += html
     } else {
       // fallback message to show
-      content.innerHTML += `<em>No features found for ${layerName}</em><br>`
+      content.innerHTML += `<em>No features found for ${getLayerName(layers.wmsLayers, layerName)}</em><br>`
     }
     })
     .catch(error => {
