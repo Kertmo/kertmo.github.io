@@ -258,6 +258,9 @@ map.on('overlayremove', (event) => {
 });
 
 map.on('click', function(event) {
+  const infoWindowContent = document.getElementById('info-content')
+  infoWindowContent.innerHTML = ""
+  
   Object.entries(activeWmsLayers).forEach(([key, value]) => {
     if (value == true) {
       console.log(`We should now build a query for ${key}`)
