@@ -1,5 +1,5 @@
 import * as layers from "./layers.js";
-//import * as turfPractice from "./turfPractice.js";
+import * as turfPractice from "./turfPractice.js";
 
 let map = L.map('map', {
   center: [58.373523, 26.716045],
@@ -213,9 +213,9 @@ loadWmsLayers(layers.wmsLayers, overlayLayers, activeWmsLayers)
 //  console.log(`[${event.latlng.lng}, ${event.latlng.lat}]`);
 
 //  let pointCoords = [event.latlng.lng, event.latlng.lat];
-//  let turfPoint = turf.point(pointCoords);
+let turfPoint = turf.point(pointCoords);
 
-//  L.geoJSON(turfPoint).addTo(map);
+L.geoJSON(turfPoint).addTo(map);
 //});
 
 function loadWmsLayers(layersList, overlayLayers, activeWmsLayers) {
@@ -239,7 +239,7 @@ function loadWmsLayers(layersList, overlayLayers, activeWmsLayers) {
   });
 }
 
-// turfPractice.turfFunctions(map);
+turfPractice.turfFunctions(map);
 
 function toggleActiveState(layerId, boolean) {
   if (typeof(activeWmsLayers[layerId]) == "boolean") {
