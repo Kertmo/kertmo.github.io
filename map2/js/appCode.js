@@ -181,8 +181,8 @@ async function initializeLayers() {
   }
 
 // insert function call here
-loadWmsLayers(layers.wmsLayers, overlayLayers)
-
+loadWmsLayers(layers.wmsLayers, overlayLayers, activeWmsLayers)
+  
   const layerControlOptions = {
     collapsed: false,
     position: 'topleft'
@@ -218,7 +218,8 @@ loadWmsLayers(layers.wmsLayers, overlayLayers)
 //  L.geoJSON(turfPoint).addTo(map);
 //});
 
-function loadWmsLayers(layersList, overlayLayers, activeWmsLayers)
+
+function loadWmsLayers(layersList, overlayLayers, activeWmsLayers) {
   layersList.forEach(layer => {
     let newLayer = L.tileLayer.wms(layer.url, {
       version: layer.version,
@@ -228,10 +229,13 @@ function loadWmsLayers(layersList, overlayLayers, activeWmsLayers)
       zIndex: layer.zIndex,
       crs: L.CRS.EPSG3857
     });
+
     overlayLayers[layer.title.en] = newLayer;
+
     activeWmsLayers[layer.layers] = false;
   });
 }
+
 
 // turfPractice.turfFunctions(map);
 
