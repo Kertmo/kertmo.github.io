@@ -263,6 +263,7 @@ map.on('click', function(event) {
   
   Object.entries(activeWmsLayers).forEach(([key, value]) => {
     if (value == true) {
+      document.getElementById('info-box').style.display = 'block';
       console.log(`We should now build a query for ${key}`)
     }
   })
@@ -353,6 +354,10 @@ map.on('click', function(event) {
       fetchWmsData(url, key);
     }
   });
+});
+
+document.getElementById('info-close').addEventListener('click', () => {
+  document.getElementById('info-box').style.display = 'none';
 });
 
 initializeLayers();
