@@ -257,5 +257,77 @@ map.on('overlayremove', (event) => {
   console.log(activeWmsLayers);
 });
 
+map.on('click', function(event) {
+  Object.entries(activeWmsLayers).forEach(([key, value]) => {
+    if (value == true) {
+      console.log(`We should now build a query for ${key}`)
+    }
+  })
+})
+
+function buildRequestUrl(e, baseUrl, layerName) {
+  const bounds = map.getBounds();
+  const bbox = [
+    bounds.getWest(),
+    bounds.getSouth(),
+    bounds.getEast(),
+    bounds.getNorth()
+  ].join(',');
+
+  const size = map.getSize();
+  const sizeX = size.x;
+  const sizeY = size.y;
+
+  const xPoint = Math.floor(e.containerPoint.x);
+  const yPoint = Math.floor(e.containerPoint.y);
+
+  const wmsUrl = baseUrl;
+  const params = new URLSearchParams({
+    service: 'WMS',
+    version: '1.1.1',
+    request: 'GetFeatureInfo',
+    query_layers: layerName,
+    layers: layerName,
+    info_format: 'application/json',
+    x: xPoint,
+    y: yPoint,
+    srs: 'EPSG:4326',
+    width: sizeX,
+    height: sizeY,
+    bbox: `${bbox}`
+  });
+
+  return wmsUrl + params;
+}
+
+function fetchWmsData(fullUrl, layerName) {
+  fetch(fullUrl)
+    .then(response => response.json())
+    .then(data => {
+      console.log('fetched data');
+      console.log(data);
+    })
+    .catch(error => {
+      console.error('Request failed:', error);
+    });
+}
+
+map.on('click', function(event) {
+  Object.entries(activeWmsLayers).forEach(([key, value]) => {
+    if (value === true) {
+
+      console.log(`Querying ${key}...`);
+
+      const url = buildRequestUrl(
+        event,
+        'https://landscape-geoinformatics.ut.ee/geoserver/pa2023/wms?',
+        key
+      );
+
+      fetchWmsData(url, key);
+    }
+  });
+});
+
 initializeLayers();
 
