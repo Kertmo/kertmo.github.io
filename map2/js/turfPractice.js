@@ -1,7 +1,7 @@
 import { pointsCollection } from "../js/points.js";
 function turfFunctions(map) {
   console.log('This text is from a module');
-  alert('Teretulemast Turf funktsioonide testimisse!');
+  alert('Veebikaardi teise osa testimine!');
 
   const pointCoords = [26.71552, 58.37393];
   const myPoint = turf.point(pointCoords);
