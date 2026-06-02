@@ -239,5 +239,9 @@ function loadWmsLayers(layersList, overlayLayers, activeWmsLayers) {
 
 // turfPractice.turfFunctions(map);
 
+map.on('overlayadd', (event) => {
+  console.log('overlayadd event fired');
+  console.log(event);
+});
 initializeLayers();
 
