@@ -3,7 +3,7 @@ import * as layers from "./layers.js";
 
 let map = L.map('map', {
   center: [58.373523, 26.716045],
-  zoom: 13,
+  zoom: 10,
   zoomControl: true // Enable default zoom control
 });
 
@@ -213,6 +213,7 @@ function loadWmsLayers(layersList, overlayLayers) {
       format: layer.format,
       transparent: layer.transparent,
       zIndex: layer.zIndex,
+      crs: L.CRS.EPSG3857
     });
     overlayLayers[layer.title.en] = newLayer;
   });
