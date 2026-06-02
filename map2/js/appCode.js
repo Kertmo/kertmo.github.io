@@ -218,24 +218,26 @@ loadWmsLayers(layers.wmsLayers, overlayLayers, activeWmsLayers)
 //  L.geoJSON(turfPoint).addTo(map);
 //});
 
-
 function loadWmsLayers(layersList, overlayLayers, activeWmsLayers) {
   layersList.forEach(layer => {
+
+    let paneName = `${layer.layers}-pane`
+    map.createPane(paneName)
+    map.getPane(paneName).style.zIndex = layer.zIndex
     let newLayer = L.tileLayer.wms(layer.url, {
       version: layer.version,
       layers: layer.layers,
       format: layer.format,
       transparent: layer.transparent,
       zIndex: layer.zIndex,
-      crs: L.CRS.EPSG3857
+      crs: L.CRS.EPSG3857,
+      pane: paneName
     });
 
     overlayLayers[layer.title.en] = newLayer;
-
     activeWmsLayers[layer.layers] = false;
   });
 }
-
 
 // turfPractice.turfFunctions(map);
 
