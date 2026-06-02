@@ -304,8 +304,26 @@ function fetchWmsData(fullUrl, layerName) {
   fetch(fullUrl)
     .then(response => response.json())
     .then(data => {
-      console.log('fetched data');
-      console.log(data);
+    const content = document.getElementById('info-content')
+    
+    if (data.features && data.features.length > 0) {
+      const feature = data.features[0]
+      const props = feature.properties
+      // show the title of the layer
+      let html = `<h4>${layerName}</h4><ul>`
+      // show each entry in properties by looping through them
+      for (const key in props) {
+        // display properties as a list
+        html += `<li><strong>${key}:</strong> ${props[key]}</li>`
+      }
+      // close the unordered list
+      html += '</ul>'
+      // update the content of the element by adding the new html
+      content.innerHTML += html
+    } else {
+      // fallback message to show
+      content.innerHTML += `<em>No features found for ${layerName}</em><br>`
+    }
     })
     .catch(error => {
       console.error('Request failed:', error);
