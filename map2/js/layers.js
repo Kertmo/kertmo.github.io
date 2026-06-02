@@ -30,3 +30,5 @@ const wmsLayers = [
     zIndex: 290,
   },
 ]
+
+export { wmsLayers }
