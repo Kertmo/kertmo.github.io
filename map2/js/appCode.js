@@ -43,6 +43,7 @@ let districtsLayer;
 let choroplethLayer;
 let heatMapLayer;
 let markersLayer;
+let activeWmsLayers = {};
 
 // Districts GeoJSON
 async function loadDistrictsLayer() {
@@ -217,7 +218,7 @@ loadWmsLayers(layers.wmsLayers, overlayLayers)
 //  L.geoJSON(turfPoint).addTo(map);
 //});
 
-function loadWmsLayers(layersList, overlayLayers) {
+function loadWmsLayers(layersList, overlayLayers, activeWmsLayers)
   layersList.forEach(layer => {
     let newLayer = L.tileLayer.wms(layer.url, {
       version: layer.version,
@@ -228,6 +229,7 @@ function loadWmsLayers(layersList, overlayLayers) {
       crs: L.CRS.EPSG3857
     });
     overlayLayers[layer.title.en] = newLayer;
+    activeWmsLayers[layer.layers] = false;
   });
 }
 
