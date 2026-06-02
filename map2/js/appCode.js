@@ -191,6 +191,18 @@ loadWmsLayers(layers.wmsLayers, overlayLayers)
 
   layerControl.addTo(map);
 
+  
+  const container = layerControl.getContainer();
+  
+  const button = document.createElement("button");
+  button.innerText = "Default View";
+  button.style.width = "100%";
+  button.style.padding = "6px";
+  
+  container.insertBefore(button, container.firstChild);
+  
+  button.addEventListener("click", defaultMapSettings);
+
   osmLayer.addTo(map);
 
   // districtsLayer.addTo(map);
