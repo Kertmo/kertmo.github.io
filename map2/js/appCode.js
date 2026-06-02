@@ -240,8 +240,16 @@ function loadWmsLayers(layersList, overlayLayers, activeWmsLayers) {
 // turfPractice.turfFunctions(map);
 
 map.on('overlayadd', (event) => {
-  console.log('overlayadd event fired');
-  console.log(event);
+  let layerId = event.layer.options.layers;
+  toggleActiveState(layerId, true);
+  console.log(activeWmsLayers);
 });
+
+map.on('overlayremove', (event) => {
+  let layerId = event.layer.options.layers;
+  toggleActiveState(layerId, false);
+  console.log(activeWmsLayers);
+});
+
 initializeLayers();
 
