@@ -29,9 +29,9 @@ body {
 
 .default-button {
   position: absolute;
-  top: 185px;
+  top: 320px;
   left: 10px;
-  z-index: 1001;
+  z-index: 1000;
   width: 131px;
   padding: 8px 20px;
   background-color: white;
