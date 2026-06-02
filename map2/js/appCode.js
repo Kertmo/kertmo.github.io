@@ -191,7 +191,6 @@ loadWmsLayers(layers.wmsLayers, overlayLayers, activeWmsLayers)
   const layerControl = L.control.layers(baseLayers, overlayLayers, layerControlOptions);
 
   layerControl.addTo(map);
-
   
   const container = layerControl.getContainer();
   
@@ -208,15 +207,6 @@ loadWmsLayers(layers.wmsLayers, overlayLayers, activeWmsLayers)
 
   // districtsLayer.addTo(map);
 }
-
-//map.on('click', function(event) {
-//  console.log(`[${event.latlng.lng}, ${event.latlng.lat}]`);
-
-//  let pointCoords = [event.latlng.lng, event.latlng.lat];
-let turfPoint = turf.point(pointCoords);
-
-L.geoJSON(turfPoint).addTo(map);
-//});
 
 function loadWmsLayers(layersList, overlayLayers, activeWmsLayers) {
   layersList.forEach(layer => {
@@ -259,17 +249,27 @@ map.on('overlayremove', (event) => {
   console.log(activeWmsLayers);
 });
 
+
 map.on('click', function(event) {
-  const infoWindowContent = document.getElementById('info-content')
-  infoWindowContent.innerHTML = ""
-  
+
+  const infoWindowContent = document.getElementById('info-content');
+  infoWindowContent.innerHTML = "";
+
   Object.entries(activeWmsLayers).forEach(([key, value]) => {
-    if (value == true) {
+    if (value === true) {
       document.getElementById('info-box').style.display = 'block';
-      console.log(`We should now build a query for ${key}`)
+
+      console.log(`Querying ${key}...`);
+
+      const url = buildRequestUrl(
+        event,
+        'https://landscape-geoinformatics.ut.ee/geoserver/pa2023/wms?',
+        key
+      );
+      fetchWmsData(url, key);
     }
-  })
-})
+  });
+});
 
 function buildRequestUrl(e, baseUrl, layerName) {
   const bounds = map.getBounds();
@@ -340,23 +340,6 @@ function fetchWmsData(fullUrl, layerName) {
       console.error('Request failed:', error);
     });
 }
-
-map.on('click', function(event) {
-  Object.entries(activeWmsLayers).forEach(([key, value]) => {
-    if (value === true) {
-
-      console.log(`Querying ${key}...`);
-
-      const url = buildRequestUrl(
-        event,
-        'https://landscape-geoinformatics.ut.ee/geoserver/pa2023/wms?',
-        key
-      );
-
-      fetchWmsData(url, key);
-    }
-  });
-});
 
 document.getElementById('info-close').addEventListener('click', () => {
   document.getElementById('info-box').style.display = 'none';
